@@ -1,0 +1,208 @@
+/* Ali Kachok Jang — uslublar */
+:root{
+  --bg:#0b0d12; --panel:#151922; --panel2:#1b2030; --line:#2a3142;
+  --text:#eef1f6; --muted:#9aa3b5; --accent:#ef4444; --accent2:#b91c1c;
+  --gold:#fbbf24; --ok:#22c55e;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{background:radial-gradient(ellipse at top,#1a1f2e 0%,var(--bg) 60%) fixed}
+button{font:inherit;cursor:pointer}
+#app{max-width:980px;margin:0 auto;padding:16px}
+.screen{display:none}
+.screen.active{display:block}
+
+/* ---------- Logo ---------- */
+.hero{text-align:center;margin:24px 0 20px}
+.logo{font-weight:900;font-size:clamp(40px,9vw,76px);letter-spacing:2px;line-height:1;
+  text-shadow:0 4px 0 #000,0 0 30px rgba(239,68,68,.35)}
+.logo span{color:var(--accent)}
+.sub{margin-top:8px;color:var(--gold);font-weight:800;letter-spacing:8px;font-size:14px}
+
+/* ---------- Cards / forms ---------- */
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+.auth{max-width:420px;margin:0 auto}
+.tabs{display:flex;gap:6px;background:var(--bg);padding:5px;border-radius:12px;margin-bottom:18px}
+.tab{flex:1;border:0;background:transparent;color:var(--muted);padding:10px;border-radius:9px;font-weight:700}
+.tab.active{background:var(--panel2);color:var(--text)}
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:14px;font-weight:600}
+input{display:block;width:100%;margin-top:6px;padding:12px 14px;border-radius:10px;border:1px solid var(--line);
+  background:var(--bg);color:var(--text);font-size:16px;outline:none}
+input:focus{border-color:var(--accent)}
+.lbl{font-size:13px;color:var(--muted);font-weight:600}
+.swatches{display:flex;gap:10px;margin:8px 0 16px}
+.sw{width:38px;height:38px;border-radius:50%;border:3px solid transparent;box-shadow:inset 0 -4px 0 rgba(0,0,0,.25)}
+.sw.active{border-color:#fff}
+.err{color:#fca5a5;font-size:14px;min-height:20px;margin-bottom:8px}
+.note{color:var(--muted);font-size:12px;text-align:center;margin:14px 0 0}
+.btn{display:block;width:100%;border:0;border-radius:12px;padding:14px;font-weight:800;font-size:16px;color:#fff;
+  background:var(--panel2);transition:transform .08s,filter .15s}
+.btn:hover{filter:brightness(1.15)}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:linear-gradient(180deg,var(--accent),var(--accent2));box-shadow:0 6px 20px rgba(239,68,68,.3)}
+.btn.coop{background:linear-gradient(180deg,#2563eb,#1e40af);box-shadow:0 6px 20px rgba(37,99,235,.25)}
+.btn.big{font-size:20px;padding:18px}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--muted)}
+
+/* ---------- Menu ---------- */
+.menu{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}
+.menu .main{grid-row:span 2}
+.hello{font-size:22px;margin-bottom:16px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
+.stat{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 8px;text-align:center}
+.stat b{display:block;font-size:24px}
+.stat span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.opp{display:flex;align-items:center;gap:14px;background:linear-gradient(90deg,rgba(185,28,28,.25),transparent);
+  border:1px solid rgba(239,68,68,.3);border-radius:12px;padding:14px;margin-bottom:16px}
+.opp .face{font-size:40px}
+.opp .meta{font-size:13px;color:var(--muted)}
+.opp .meta b{color:var(--text);font-size:17px;display:block}
+.lvl{display:flex;gap:3px;margin-top:6px}
+.lvl i{width:12px;height:6px;border-radius:2px;background:var(--line)}
+.lvl i.on{background:var(--accent)}
+.menu .main .btn{margin-top:10px}
+.coop-rec{font-size:13px;color:var(--muted);text-align:center;margin-top:8px}
+h3{margin:0 0 12px;font-size:16px}
+.board{list-style:none;margin:0;padding:0}
+.board li{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:9px;font-size:14px}
+.board li:nth-child(odd){background:rgba(255,255,255,.03)}
+.board li.me{outline:1px solid var(--accent)}
+.board .rk{width:22px;color:var(--muted);font-weight:800}
+.board .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.board .sc{color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px}
+.ali-rec{font-size:12px;color:var(--muted);margin-top:10px}
+.keys{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:14px;align-items:center}
+kbd{background:var(--bg);border:1px solid var(--line);border-bottom-width:3px;border-radius:6px;padding:2px 7px;
+  font-family:inherit;font-size:12px;font-weight:700;white-space:nowrap}
+.tip{margin-top:14px;font-size:13px;color:var(--muted);line-height:1.5}
+.tip b{color:var(--gold)}
+
+/* ---------- Modal (2-o'yinchi) ---------- */
+.modal{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;
+  background:rgba(5,6,10,.75);backdrop-filter:blur(3px);padding:16px;overflow:auto}
+.modal.hidden{display:none}
+.modal .card{width:100%;max-width:440px}
+.ctrl2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 16px}
+.ctrl2 div{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;font-size:12px;
+  color:var(--muted);line-height:2}
+.ctrl2 b{color:var(--text);display:block;font-size:13px;line-height:1.4}
+
+/* ---------- Game ---------- */
+.stage{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#000;
+  box-shadow:0 20px 60px rgba(0,0,0,.5)}
+canvas{display:block;width:100%;height:auto;touch-action:none}
+/* pauza/ovoz tugmalari taymer ostida — hech qaysi jon bariga tegmaydi */
+.icon-btn{position:absolute;top:15.5%;width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,.15);
+  background:rgba(0,0,0,.45);color:#fff;font-size:15px;z-index:3;padding:0}
+#btnMute{left:calc(50% - 40px)}
+#btnPause{left:calc(50% + 4px)}
+.overlay{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;z-index:5;
+  background:rgba(5,6,10,.72);backdrop-filter:blur(3px);padding:16px;overflow:auto}
+.overlay.hidden{display:none}
+.ov-box{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;width:100%;max-width:400px;text-align:center;margin:auto}
+.ov-title{font-size:clamp(28px,6vw,42px);font-weight:900;margin-bottom:4px}
+.ov-title.win{color:var(--gold)}
+.ov-title.lose{color:var(--accent)}
+.ov-sub{color:var(--muted);margin-bottom:16px}
+.ov-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;text-align:left}
+.ov-stats div{background:var(--bg);border-radius:10px;padding:8px 10px;font-size:13px;color:var(--muted)}
+.ov-stats b{display:block;color:var(--text);font-size:17px}
+.ov-table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:13px}
+.ov-table th,.ov-table td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:right}
+.ov-table th:first-child,.ov-table td:first-child{text-align:left;color:var(--muted)}
+.ov-table th{color:var(--text);max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ov-box .btn{margin-top:8px}
+.keys-hint{text-align:center;color:var(--muted);font-size:13px;margin-top:12px;line-height:2}
+.keys-hint b{color:var(--text)}
+
+/* ---------- Kuchaytirish do'koni ---------- */
+.shop{grid-column:1 / -1}
+.shop-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.shop-head h3{margin:0}
+.coins{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px}
+.coins b{color:var(--gold);font-size:17px}
+.upg-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.upg{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.upg-top{display:flex;align-items:center;gap:8px;font-size:15px}
+.upg-top .ic{font-size:20px}
+.pips{display:flex;gap:3px;margin-left:auto}
+.pips i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.pips i.on{background:var(--gold)}
+.upg-desc{font-size:12px;color:var(--muted);flex:1;line-height:1.5}
+.upg-desc b{color:#86efac}
+.btn.small{padding:9px;font-size:13px;border-radius:9px;background:linear-gradient(180deg,#ca8a04,#a16207)}
+.btn.small.ghost{background:transparent}
+.btn:disabled{opacity:.45;cursor:not-allowed;filter:none}
+.coin-gain{color:var(--gold);font-weight:800;margin:-8px 0 14px}
+
+/* ---------- Onlayn xona ---------- */
+.btn.online{background:linear-gradient(180deg,#16a34a,#15803d);box-shadow:0 6px 20px rgba(22,163,74,.25)}
+.hidden{display:none!important}
+.join-row{display:flex;gap:8px;margin:12px 0 4px}
+.join-row input{margin:0;text-transform:uppercase;letter-spacing:5px;font-weight:800;text-align:center}
+.join-row .btn{width:auto;padding:0 20px;white-space:nowrap}
+.net-status{text-align:center;padding:16px;background:var(--bg);border:1px solid var(--line);border-radius:12px;
+  margin-bottom:10px;font-size:14px;color:var(--muted);line-height:1.6}
+.net-status b{color:var(--text)}
+.room-code{font-size:42px;font-weight:900;letter-spacing:10px;color:var(--gold);margin:4px 0 6px}
+.room-link{font-size:12px;word-break:break-all;user-select:all;color:var(--muted);margin:8px 0}
+.net-status .btn{margin-top:6px}
+.wait{margin-top:10px;color:var(--text)}
+#netCancel{margin-top:10px}
+
+/* ---------- Teginish tugmalari ---------- */
+.rotate-hint{display:none;text-align:center;font-size:13px;color:var(--gold);background:rgba(251,191,36,.08);
+  border:1px solid rgba(251,191,36,.25);border-radius:10px;padding:8px;margin-bottom:10px}
+.touch{display:none;justify-content:space-between;align-items:flex-end;gap:10px;margin-top:12px;
+  user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:none}
+.touch .grp{display:grid;gap:8px;position:relative}
+.touch.solo .mv{grid-template-columns:repeat(3,64px)}
+.touch.solo .ak{grid-template-columns:repeat(2,84px)}
+.touch.duo .pl{grid-template-columns:repeat(3,54px);gap:6px}
+.touch.duo .wide{grid-column:span 3}
+.ptag{position:absolute;top:-18px;left:2px;font-size:11px;font-weight:900;color:var(--gold)}
+.tb{height:58px;border-radius:14px;border:1px solid var(--line);background:var(--panel2);color:#fff;font-weight:800;
+  font-size:14px;touch-action:none;-webkit-tap-highlight-color:transparent}
+.touch.duo .tb{height:44px;font-size:11px;border-radius:11px}
+.tb.on{background:var(--accent2)!important}
+.tb.atk{background:linear-gradient(180deg,#3b1d1d,#2a1414);border-color:#5b2626}
+@media (pointer:coarse){ .touch{display:flex} .keys-hint{display:none} .icon-btn{width:30px;height:30px;font-size:13px} }
+@media (pointer:coarse) and (orientation:portrait){ .rotate-hint{display:block} }
+
+/* Telefon gorizontal: o'yin butun ekranni egallaydi, tugmalar ustida */
+@media (pointer:coarse) and (orientation:landscape){
+  body.in-game #app{padding:0;max-width:none}
+  body.in-game .game-wrap{position:relative;height:100vh;height:100dvh;display:flex;align-items:center;justify-content:center;background:#000;overflow:hidden}
+  body.in-game .stage{width:min(100vw, calc(100vh * 16 / 9));width:min(100vw, calc(100dvh * 16 / 9));border:0;border-radius:0;box-shadow:none}
+  body.in-game .touch{position:absolute;left:0;right:0;bottom:0;margin:0;pointer-events:none;
+    padding:8px max(10px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left))}
+  body.in-game .touch .grp{pointer-events:auto}
+  body.in-game .tb{background:rgba(27,32,48,.5);border-color:rgba(255,255,255,.2);backdrop-filter:blur(2px)}
+  body.in-game .tb.atk{background:rgba(91,38,38,.5)}
+  body.in-game .touch.solo .tb{height:52px}
+  body.in-game .touch.solo .mv{grid-template-columns:repeat(3,58px)}
+  body.in-game .touch.solo .ak{grid-template-columns:repeat(2,74px)}
+  body.in-game .touch.duo .tb{height:38px}
+  body.in-game .touch.duo .pl{grid-template-columns:repeat(3,48px)}
+}
+@media (max-height:500px){
+  .ov-box{padding:14px}
+  .ov-title{font-size:26px}
+  .ov-sub{margin-bottom:8px;font-size:13px}
+  .ov-stats{gap:5px;margin-bottom:8px}
+  .ov-stats div{padding:5px 8px}
+  .ov-table th,.ov-table td{padding:4px 6px}
+  .ov-box .btn{padding:10px;margin-top:6px}
+}
+
+@media (max-width:720px){
+  #app{padding:12px}
+  .menu{grid-template-columns:1fr}
+  .menu .main{grid-row:auto}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .touch.solo .mv{grid-template-columns:repeat(3,1fr)}
+  .touch.solo .ak{grid-template-columns:repeat(2,1fr)}
+  .touch.solo .grp{flex:1}
+  .upg-list{grid-template-columns:1fr 1fr}
+}

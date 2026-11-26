@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Ali Kachok Jang</title>
+<meta name="description" content="Ali Kachok bilan boks jangi — yakka yoki ikki o'yinchi birga.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥊</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ================= RO'YXATDAN O'TISH ================= -->
+  <section id="scr-auth" class="screen active">
+    <div class="hero">
+      <div class="logo">ALI <span>KACHOK</span></div>
+      <div class="sub">BOKS JANGI</div>
+    </div>
+    <div class="card auth" id="auth1">
+      <div class="tabs">
+        <button class="tab active" data-tab="reg" type="button">Ro'yxatdan o'tish</button>
+        <button class="tab" data-tab="login" type="button">Kirish</button>
+      </div>
+      <form autocomplete="on">
+        <label>Ism (laqab)
+          <input class="f-name" maxlength="16" autocomplete="username" placeholder="masalan: Sardor">
+        </label>
+        <label>Parol
+          <input class="f-pass" type="password" maxlength="32" autocomplete="current-password" placeholder="kamida 4 ta belgi">
+        </label>
+        <div class="reg-only">
+          <span class="lbl">Qo'lqop rangi</span>
+          <div class="swatches"></div>
+        </div>
+        <div class="err"></div>
+        <button class="btn primary auth-btn" type="submit">Ro'yxatdan o'tish</button>
+      </form>
+      <p class="note" id="modeNote">Ulanmoqda...</p>
+    </div>
+  </section>
+
+  <!-- ================= MENYU ================= -->
+  <section id="scr-menu" class="screen">
+    <div class="hero" style="margin:8px 0 16px">
+      <div class="logo" style="font-size:clamp(30px,6vw,48px)">ALI <span>KACHOK</span></div>
+    </div>
+    <div class="menu">
+      <div class="card main">
+        <div class="hello">Salom, <b id="mName"></b>! 🥊</div>
+        <div class="stats">
+          <div class="stat"><b id="sWin">0</b><span>G'alaba</span></div>
+          <div class="stat"><b id="sLose">0</b><span>Mag'lubiyat</span></div>
+          <div class="stat"><b id="sKo">0</b><span>Nokaut</span></div>
+          <div class="stat"><b id="sBest">—</b><span>Eng tez KO</span></div>
+        </div>
+        <div class="opp">
+          <div class="face">💪</div>
+          <div class="meta">
+            Sizning raqibingiz
+            <b>ALI KACHOK</b>
+            <span id="mLvlTxt"></span>
+            <div class="lvl" id="mLvl"></div>
+          </div>
+        </div>
+        <button class="btn primary big" id="btnFight">🥊 Ali Kachok bilan jang!</button>
+        <button class="btn online" id="btnOnline">🌐 Do'st bilan onlayn (har kim o'z qurilmasidan)</button>
+        <button class="btn coop" id="btnCoop">👥 2 o'yinchi bitta qurilmada</button>
+        <div class="coop-rec" id="coopRec"></div>
+        <button class="btn ghost" id="btnLogout">Chiqish (boshqa o'yinchi)</button>
+      </div>
+      <div class="card">
+        <h3 id="boardTitle">🏆 Reyting</h3>
+        <ol class="board" id="board"></ol>
+        <div class="ali-rec" id="aliRec"></div>
+      </div>
+      <div class="card">
+        <h3>🎮 Boshqaruv (yakka)</h3>
+        <div class="keys">
+          <span><kbd>A</kbd> <kbd>D</kbd></span><span>Yurish</span>
+          <span><kbd>J</kbd></span><span>Jab: tez, kuchsiz</span>
+          <span><kbd>K</kbd></span><span>Xuk: o'rtacha</span>
+          <span><kbd>L</kbd></span><span>Aperkot: sekin, kuchli</span>
+          <span><kbd>S</kbd></span><span>Himoya (bosib turing)</span>
+          <span><kbd>Probel</kbd></span><span>Chap berish</span>
+          <span><kbd>P</kbd></span><span>Pauza</span>
+        </div>
+        <div class="tip">
+          💡 Ali qizarib, qo'lini orqaga tortsa, <b>KACHOK ZARBA</b> keladi. Chap bering yoki
+          <b>aperkot</b> bilan to'xtating! Mushak ko'rsatayotganda uring. Har g'alabadan keyin Ali kuchayadi.
+        </div>
+      </div>
+      <div class="card shop">
+        <div class="shop-head">
+          <h3>⚡ Kuchaytirish</h3>
+          <div class="coins">🪙 <b id="coins">0</b> tanga</div>
+        </div>
+        <div class="upg-list" id="upgList"></div>
+        <div class="err" id="shopErr" style="margin:8px 0 0"></div>
+        <p class="tip" style="margin-bottom:0">Har jangdan keyin tanga olasiz: g'alaba, nokaut va Aliga bergan zararingiz uchun.
+          Mag'lub bo'lsangiz ham tanga beriladi. Kuchaytirishlar yakka va jamoa rejimida ishlaydi.</p>
+      </div>
+    </div>
+
+    <!-- 2-o'yinchi oynasi -->
+    <div class="modal hidden" id="p2modal">
+      <div class="card" id="auth2">
+        <h3>👥 2-o'yinchi</h3>
+        <p class="tip" style="margin:0 0 14px">Ikkalangiz birga Ali Kachokka qarshi chiqasiz. 2-o'yinchi ham
+          ro'yxatdan o'tishi yoki o'z hisobiga kirishi kerak. Kompyuterda bitta klaviaturada,
+          telefonda esa ekranning ikki chetidagi tugmalar bilan o'ynaysiz.</p>
+        <div class="ctrl2">
+          <div><b>1-o'yinchi (chapda)</b>
+            <kbd>A</kbd><kbd>D</kbd> yurish<br><kbd>W</kbd> chap · <kbd>S</kbd> himoya<br>
+            <kbd>F</kbd> jab · <kbd>G</kbd> xuk · <kbd>H</kbd> aperkot</div>
+          <div><b>2-o'yinchi (o'ngda)</b>
+            <kbd>←</kbd><kbd>→</kbd> yurish<br><kbd>↑</kbd> chap · <kbd>↓</kbd> himoya<br>
+            <kbd>,</kbd> jab · <kbd>.</kbd> xuk · <kbd>/</kbd> aperkot</div>
+        </div>
+        <div class="tabs">
+          <button class="tab active" data-tab="reg" type="button">Ro'yxatdan o'tish</button>
+          <button class="tab" data-tab="login" type="button">Kirish</button>
+        </div>
+        <form autocomplete="off">
+          <label>Ism (laqab)
+            <input class="f-name" maxlength="16" autocomplete="off" placeholder="2-o'yinchi ismi">
+          </label>
+          <label>Parol
+            <input class="f-pass" type="password" maxlength="32" autocomplete="new-password" placeholder="kamida 4 ta belgi">
+          </label>
+          <div class="reg-only">
+            <span class="lbl">Qo'lqop rangi</span>
+            <div class="swatches"></div>
+          </div>
+          <div class="err"></div>
+          <button class="btn coop auth-btn" type="submit">Ro'yxatdan o'tib jangga!</button>
+          <button class="btn ghost" type="button" id="p2Cancel" style="margin-top:8px">Bekor qilish</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Do'st bilan onlayn -->
+    <div class="modal hidden" id="netModal">
+      <div class="card">
+        <h3>🌐 Do'st bilan onlayn</h3>
+        <p class="tip" style="margin:0 0 14px">Har kim o'z telefoni yoki kompyuteridan kiradi. Biringiz xona yaratadi,
+          ikkinchingiz kodni kiritadi va birga Ali Kachokka qarshi chiqasiz!</p>
+        <div id="netChoose">
+          <button class="btn online" id="netHostBtn" type="button">🏠 Xona yaratish</button>
+          <div class="join-row">
+            <input id="netCode" maxlength="6" placeholder="XONA KODI" autocomplete="off" autocapitalize="characters" spellcheck="false">
+            <button class="btn primary" id="netJoinBtn" type="button">Qo'shilish</button>
+          </div>
+        </div>
+        <div class="net-status hidden" id="netStatus"></div>
+        <div class="err" id="netErr"></div>
+        <button class="btn ghost" id="netCancel" type="button">Bekor qilish</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= O'YIN ================= -->
+  <section id="scr-game" class="screen">
+    <div class="rotate-hint">📱 Yaxshiroq o'ynash uchun telefonni gorizontal holatga burang</div>
+    <div class="game-wrap">
+      <div class="stage" id="stage">
+        <canvas id="cv" width="960" height="540"></canvas>
+        <button id="btnMute" class="icon-btn" type="button" title="Ovoz (M)">🔊</button>
+        <button id="btnPause" class="icon-btn" type="button" title="Pauza (P)">⏸</button>
+        <div id="overlay" class="overlay hidden"></div>
+      </div>
+      <div class="touch" id="touch"></div>
+    </div>
+    <div class="keys-hint" id="keysHint"></div>
+  </section>
+</div>
+
+<script src="js/net.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>

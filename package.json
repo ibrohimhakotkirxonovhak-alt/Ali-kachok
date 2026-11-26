@@ -1,0 +1,10 @@
+{
+  "name": "ali-kachok-jang",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ali Kachok bilan boks jangi — brauzer o'yini",
+  "type": "module",
+  "dependencies": {
+    "@neondatabase/serverless": "^1.2.1"
+  }
+}
